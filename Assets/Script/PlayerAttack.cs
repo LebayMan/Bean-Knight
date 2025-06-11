@@ -131,7 +131,7 @@ public class PlayerTypingChallenge : MonoBehaviour
         }
     }
 
-    void EndTypingChallenge(bool success)
+    public void EndTypingChallenge(bool success)
     {
         if (success && currentEnemy != null)
         {

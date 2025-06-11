@@ -18,11 +18,18 @@ public class Enemy : MonoBehaviour, IDamageable
         health -= damage;
         Debug.Log($"{gameObject.name} took {damage} damage. Health remaining: {health}");
         UpdateHealthText();
-
+        GameMaster.instance.AddScore(20);
         if (health <= 0)
         {
-            Destroy(gameObject);
+            GameMaster.instance.WIN(); // Call the win method from GameMaster
+            gameObject.SetActive(false); // Deactivate the enemy when health is 0
         }
+    }
+    public void Reset()
+    {
+        gameObject.SetActive(true); // Reactivate the enemy
+        health = 100;
+        UpdateHealthText();
     }
 
     private void UpdateHealthText()

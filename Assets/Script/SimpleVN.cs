@@ -30,6 +30,15 @@ public class SimpleVN : MonoBehaviour
     {
         nextbuttonObject.SetActive(false); // Hide button at start
     }
+    public void Reset()
+    {
+        currentIndex = 0;
+        dialogueActive = false;
+        nextbuttonObject.SetActive(false);
+        nameText.text = "Baraduka";
+        dialogueText.text = "Ajak obrol";
+        isdialougedone = false;
+    }
 
     void Update()
     {

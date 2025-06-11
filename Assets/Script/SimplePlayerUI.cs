@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class SimplePlayerUI : MonoBehaviour
 {
@@ -29,6 +30,11 @@ public class SimplePlayerUI : MonoBehaviour
     public void AddHealth(float amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        if(currentHealth <= 0)
+        {
+            GameMaster.instance.Lose();
+            Debug.Log("Player has died.");
+        }
         UpdateUI();
     }
 
@@ -44,7 +50,7 @@ public class SimplePlayerUI : MonoBehaviour
         UpdateUI();
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         if (healthBar != null)
             healthBar.fillAmount = currentHealth / maxHealth;

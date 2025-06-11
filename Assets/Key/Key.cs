@@ -8,6 +8,11 @@ public class Key : MonoBehaviour
     {
         
     }
+    public void Reset()
+    {
+        gameObject.SetActive(true); // Reactivate the key
+        doeskeygetpickedup = false; // Reset the pickup state
+    }
 
     // Update is called once per frame
     void OnTriggerEnter(Collider collision)
@@ -15,7 +20,7 @@ public class Key : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             doeskeygetpickedup = true;
-            Destroy(gameObject);
+            gameObject.SetActive(false); // Deactivate the key after pickup
         }
     }
 }
